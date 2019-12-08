@@ -1,0 +1,9 @@
+{
+  "express" :
+  {
+    "port": 3001
+  },
+   "numberEggs" : "0",
+   "rotation" : "0",
+   "sequence": "0"
+}
