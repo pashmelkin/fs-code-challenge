@@ -1,28 +1,22 @@
 import React from 'react';
-import SettingsEntity from '../entities/SettingsEntity';
+import SettingsEntity from './entities/SettingsEntity';
+import Rotation from './Rotation';
+import Sequence from './Sequence';
+import NumEggs from './NumEggs';
 
 class Settings extends React.Component {
   constructor(props) {
    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.sendNumEggs = this.sendNumEggs.bind(this);
+  }
 
- }
-
-  sendNumEggs = (numEggs, callback) => {
-    const settings = new Settings(
-      12,
-      1,
-      "1 2 3 4 4");
-
-    console.log("sending :" + numEggs);
+  saveSettings = (settings, callback) => {
+    console.log(settings);
     fetch('http://localhost:3001/settings', {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
+       'Content-Type': 'application/json'
       },
-      body: JSON.stringify(settings),
+      body: settings
     },
     ).then(response => {
       if (response.ok) {
@@ -33,24 +27,25 @@ class Settings extends React.Component {
     });
   };
 
-
   handleClick = () => {
     let result = "";
-    this.sendNumEggs(5, jsonBody => {
+    let settings = new SettingsEntity("1", "5", "1 2 3 4 5");
+    let data = JSON.stringify(settings);
+    this.saveSettings(data, jsonBody => {
         result = JSON.stringify(jsonBody, null, 2);
-        console.log("sent");
-        console.log(result);
     })
   };
+
 
   render() {
     return(
     <div>
-      <button onClick={this.handleClick}>schedule</button>;
-       Save Settings
-    </div>)
-
+      <NumEggs />
+      <NumEggs />
+      <NumEggs />
+      <button onClick={this.handleClick}> Save Settings </button>
+    </div>
+  );
   }
 }
-
-export default SettingsComp;
+export default Settings;

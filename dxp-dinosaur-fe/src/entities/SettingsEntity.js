@@ -1,8 +1,7 @@
-"use strict";
 
 class SettingsEntity {
   constructor(numberEggs, rotation, sequence) {
-    this.numberEggs = numberEggs;
+    this.numberOfEggs = numberEggs;
     this.rotation = rotation;
     this.sequence = sequence;
   }
