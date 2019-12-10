@@ -3,14 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../config');
-const Settings = require('../entities/Settings');
+//const Settings = require('../entities/Settings');
 
 
 router.put('/', function(req, res) {
-    const settings = new Settings(
-      req.body.numberOfEggs,
-      req.body.rotation,
-      req.body.sequence);
+//    const settings = new Settings(
+//      req.body.numberOfEggs,
+//      req.body.rotation,
+//      req.body.sequence);
 
     //  let errors = settings.Validate();
         //if errors.array = =0 then set to config

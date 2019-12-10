@@ -7,7 +7,18 @@ import NumEggs from './NumEggs';
 class Settings extends React.Component {
   constructor(props) {
    super(props);
+   this.state = {
+     numberOfEggs: ' ',
+     rotation: ' ',
+     sequence: ' ',
+     formValid: true,
+     error: null
+   }
   }
+
+  handleLanguage = (langValue) => {
+         this.setState({language: langValue});
+     }
 
   saveSettings = (settings, callback) => {
     console.log(settings);
@@ -26,10 +37,22 @@ class Settings extends React.Component {
       }
     });
   };
+  handleEggs = (number) => {
+      this.setState({numberOfEggs: number});
+  }
+  handleRotation = (rotation) => {
+      this.setState({rotation});
+  }
+  handleSequence = (sequence) => {
+      this.setState({sequence: sequence});
+  }
 
   handleClick = () => {
     let result = "";
-    let settings = new SettingsEntity("1", "5", "1 2 3 4 5");
+    let settings = new SettingsEntity(
+      this.state.numberOfEggs,
+      this.state.rotation,
+      this.state.sequence);
     let data = JSON.stringify(settings);
     this.saveSettings(data, jsonBody => {
         result = JSON.stringify(jsonBody, null, 2);
@@ -40,10 +63,12 @@ class Settings extends React.Component {
   render() {
     return(
     <div>
-      <NumEggs />
-      <NumEggs />
-      <NumEggs />
-      <button onClick={this.handleClick}> Save Settings </button>
+      <NumEggs  onNumberSet={this.handleEggs} />
+      <Rotation onRotation={this.handleRotation} />
+      <Sequence onSequence={this.handleSequence} />
+
+      <button type="submit" onClick={this.handleClick}
+        disabled={!this.state.formValid}>Save Settings</button>
     </div>
   );
   }
