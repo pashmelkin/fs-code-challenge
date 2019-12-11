@@ -12,16 +12,18 @@ router.put('/', function(req, res) {
       req.body.rotation,
       req.body.sequence);
 
-    //  let errors = settings.Validate();
-        //if errors.array = =0 then set to config
-        // else return error
-      console.log(req.body);    // Prints the JSON object
+      const errors = settings.Validate();
+      if (errors.length > 0) {
+          res.status(400).json(errors);
+      }
+      else
+      {
+          config.numberEggs = settings.numberEggs;
+          config.rotation = settings.rotation;
+          config.sequence = settings.sequence;
 
-    config.numberEggs = settings.numberEggs;
-    config.rotation = settings.rotation;
-    config.sequence = settings.sequence;
-    console.log(config.numberEggs + ' ' + config.rotation + ' ' + config.sequence);
-   res.send(config.numberEggs + ' ' + config.rotation + ' ' + config.sequence);
+          res.status(202).end();
+      }
 });
 
 module.exports = router;

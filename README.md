@@ -16,3 +16,4 @@
     -> to check it's running you can start Postman
     -> using pre-commit hooks with tests
     -> Using JEST for unit tests
+    -> use pre-commit hook which runs the unit tests and eslint
