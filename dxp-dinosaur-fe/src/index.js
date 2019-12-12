@@ -9,20 +9,27 @@ class App extends React.Component {
   constructor(props)
   {
     super(props);
-    this.state={page: "Settings"};
+    this.state = {
+      page: "Settings",
+      runReport: " "
+    };
   }
 
-  moveToNextPage = nextPage => {
-      console.log('move to next component: ' + nextPage);
-      this.setState({page: nextPage})
+  moveToNextPage = page => {
+      this.setState({page});
     }
+
+  printReport = runReport => {
+      this.setState(runReport);
+  }
+
 
   render() {
     return (
         <div>
           {this.state.page === "Settings" && <Settings onSettingsSet={this.moveToNextPage}/>}
-          {this.state.page === "SavedSettings" && <SavedSettings onSettingsSet={this.moveToNextPage}/>}
-          {this.state.page === "Run" && <RunReport onSettingsSet={this.moveToNextPage}/>}
+          {this.state.page === "SavedSettings" && <SavedSettings onSettingsSet={this.moveToNextPage} onRunReportReady={this.printReport}/>}
+          {this.state.page === "RunReport" && <RunReport onSettingsSet={this.moveToNextPage} />}
         </div>
     )
   }
