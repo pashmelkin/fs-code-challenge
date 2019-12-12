@@ -16,10 +16,6 @@ class Settings extends React.Component {
    }
   }
 
-  handleLanguage = (langValue) => {
-         this.setState({language: langValue});
-     }
-
   saveSettings = (settings, callback) => {
     console.log(settings);
     fetch('http://localhost:3001/settings', {
@@ -28,12 +24,14 @@ class Settings extends React.Component {
        'Content-Type': 'application/json'
       },
       body: settings
-    },
+    }
     ).then(response => {
-      if (response.ok) {
+      if (!response.ok) {
         response.json().then(json => {
           callback(json);
         });
+      } else {
+        callback();
       }
     });
   };
@@ -56,6 +54,11 @@ class Settings extends React.Component {
     let data = JSON.stringify(settings);
     this.saveSettings(data, jsonBody => {
         result = JSON.stringify(jsonBody, null, 2);
+        console.log(result);
+    if (result === undefined) 
+    {
+      this.props.onSettingsSet("SavedSettings");
+    }
     })
   };
 
