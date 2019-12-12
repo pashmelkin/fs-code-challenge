@@ -1,15 +1,14 @@
 import React from "react";
 
-class SavedSettings extends React.Component {
+class RunReport extends React.Component {
 
   sendRunCommnad = (callback) => {
     fetch('http://localhost:3001/run', {
       method: 'POST'
     }
     ).then(response => {
-      if (response.ok) {
+      if (!response.ok) {
         response.json().then(json => {
-          console.log("json: " + json);
           callback(json);
         });
       } else {
@@ -22,7 +21,7 @@ class SavedSettings extends React.Component {
 
     this.sendRunCommnad(jsonBody => {
         let result = JSON.stringify(jsonBody, null, 2);
-          console.log("result: " + result);
+        console.log(result);
         if (result === undefined)
         {
           this.props.onSettingsSet("Run");
@@ -39,4 +38,4 @@ class SavedSettings extends React.Component {
   }
 };
 
-export default SavedSettings;
+export default RunReport;

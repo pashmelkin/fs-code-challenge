@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import  Settings from './Settings';
+import Settings from './Settings';
 import SavedSettings from './SavedSettings';
+import RunReport from './RunReport';
 
 class App extends React.Component {
   constructor(props)
@@ -21,6 +22,7 @@ class App extends React.Component {
         <div>
           {this.state.page === "Settings" && <Settings onSettingsSet={this.moveToNextPage}/>}
           {this.state.page === "SavedSettings" && <SavedSettings onSettingsSet={this.moveToNextPage}/>}
+          {this.state.page === "Run" && <RunReport onSettingsSet={this.moveToNextPage}/>}
         </div>
     )
   }
