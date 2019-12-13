@@ -15,21 +15,21 @@ class App extends React.Component {
     };
   }
 
-  moveToNextPage = page => {
+  moveToNextPage = (page, runReport) => {
       this.setState({page});
+      this.setState({runReport});
     }
 
   printReport = runReport => {
-      this.setState(runReport);
+      this.setState({runReport});
   }
-
 
   render() {
     return (
         <div>
           {this.state.page === "Settings" && <Settings onSettingsSet={this.moveToNextPage}/>}
           {this.state.page === "SavedSettings" && <SavedSettings onSettingsSet={this.moveToNextPage} onRunReportReady={this.printReport}/>}
-          {this.state.page === "RunReport" && <RunReport onSettingsSet={this.moveToNextPage} />}
+          {this.state.page === "RunReport" && <RunReport onSettingsSet={this.moveToNextPage} runReport={this.state.runReport}/>}
         </div>
     )
   }

@@ -54,11 +54,11 @@ class Settings extends React.Component {
     let data = JSON.stringify(settings);
     this.saveSettings(data, jsonBody => {
         result = JSON.stringify(jsonBody, null, 2);
-        console.log(result);
-    if (result === undefined) 
-    {
-      this.props.onSettingsSet("SavedSettings");
-    }
+        //TODO base on errors rerturns
+        if (result === undefined)
+        {
+          this.props.onSettingsSet("SavedSettings");
+        }
     })
   };
 
