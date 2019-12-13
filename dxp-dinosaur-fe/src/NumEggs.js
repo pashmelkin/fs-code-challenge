@@ -7,12 +7,17 @@ class NumEggs extends React.Component {
   }
 
   handleChange = event => {
+      if(event.target.value === '')
+      {
+          this.setState({ numberOfEggs: '' });
+      }
       const numberEggs = parseInt(event.target.value, 10);
       if (!isNaN(numberEggs) && numberEggs > 0)
       {
         this.setState({ numberOfEggs: numberEggs });
         this.props.onNumberSet(numberEggs);
       }
+
    };
 
   render() {
@@ -21,7 +26,7 @@ class NumEggs extends React.Component {
       <div>  Number of Eggs </div>
       <form>
       <input
-           type="number"
+           type="text"
            min='0'
            name="Number of Eggs"
            value={this.state.numberOfEggs}
