@@ -7,7 +7,7 @@ class Sequence extends React.Component {
   }
 
   handleChange = event => {
-    const sequence = event.target.value.trim();
+    const sequence = event.target.value.trimLeft();
     this.setState({ sequence });
     this.props.onSequence(sequence);
 
