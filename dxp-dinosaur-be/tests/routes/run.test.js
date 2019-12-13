@@ -26,9 +26,9 @@ test('run endpoint returns json object from configuration', async done => {
 })
 
 test('run endpoint returns error when configuration is not set', async done => {
-  setConfiguration(0, 0, ' ');
+  setConfiguration('0', '0', ' ');
   const response = await request.post('/run');
-  expect(response.status).toBe(500);
+  expect(response.status).toBe(400);
   done();
 })
 

@@ -5,9 +5,9 @@
   1b. FE : move to dxp-dinosaur-fe folder and do 'npm start'
 
 3. Things left to do.
-   -> Navigate between pages (REACT Router)
    -> Tests for React pages
    -> move to yarn (?)
+   -> CSS usage
 
 4. Some notes:
   3a. FE
