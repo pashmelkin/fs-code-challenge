@@ -2,10 +2,6 @@ import React from "react";
 
 class RunReport extends React.Component {
 
-  constructor(props) {
-   super(props);
-  }
-
   handleClick = () => {
       this.props.onSettingsSet("Settings");
   };
