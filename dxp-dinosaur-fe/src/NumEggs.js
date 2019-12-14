@@ -1,4 +1,7 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+
 
 class NumEggs extends React.Component {
   constructor(props) {
@@ -22,18 +25,15 @@ class NumEggs extends React.Component {
 
   render() {
     return(
+
       <div>
-      <div>  Number of Eggs </div>
-      <form>
-      <input
-           type="text"
-           min='0'
-           name="Number of Eggs"
-           value={this.state.numberOfEggs}
-           onChange={this.handleChange}
-         />
-        </form>
-        </div>
+          <Form>
+          <Form.Group controlId="textareas">
+            <Form.Label> Number of Eggs</Form.Label>
+            <Form.Control type="integer" placeholder="Enter Number of Eggs" />
+          </Form.Group>
+        </Form>
+      </div>
       );
   }
 }

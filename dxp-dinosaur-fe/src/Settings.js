@@ -4,6 +4,9 @@ import Rotation from './Rotation';
 import Sequence from './Sequence';
 import NumEggs from './NumEggs';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+
 class Settings extends React.Component {
   constructor(props) {
    super(props);
@@ -70,8 +73,8 @@ class Settings extends React.Component {
       <Rotation onRotation={this.handleRotation} />
       <Sequence onSequence={this.handleSequence} />
 
-      <button type="submit" onClick={this.handleClick}
-        disabled={!this.state.formValid}>Save Settings</button>
+      <Button onClick={this.handleClick} variant="primary" type="submit"
+        disabled={!this.state.formValid}>Save Settings</Button>
     </div>
   );
   }
