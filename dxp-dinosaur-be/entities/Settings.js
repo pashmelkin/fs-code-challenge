@@ -29,7 +29,6 @@ class Settings {
   ValidateSequence(){
     var elements = Array.from(this.sequence.split(" "));
     elements.forEach(element => {
-      console.log(element);
 
         if(this.ValidateDecimalNumber(element) === VALIDATION_ERROR)
         {
