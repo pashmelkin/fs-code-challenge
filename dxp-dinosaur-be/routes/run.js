@@ -29,20 +29,10 @@ router.post('/', function(req, res) {
       rotations.push({"egg" : i, "was_rotated": 0.0})
       i++;
     }
-    try
-    {
-      let orders = Array.from(config.sequence.split(" "));
-      console.log(orders);
-      orders.forEach(order => {
-        console.log("order:" + order);
-        rotations[order-1]["was_rotated"] += rotationParsed
-      })
-    }
-    catch(error)
-    {
-      console.log(error);
-      res.status(400).send("Internal error with configuration").end();
-    }
+    let orders = Array.from(config.sequence.split(" "));
+    orders.forEach(order => {
+      rotations[order-1]["was_rotated"] += rotationParsed
+    })
 
     let report = {
       "number_of_eggs": config.numberEggs,
