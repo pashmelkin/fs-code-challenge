@@ -1,4 +1,6 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Button, Row} from 'react-bootstrap'
 
 class RunReport extends React.Component {
 
@@ -9,10 +11,14 @@ class RunReport extends React.Component {
   render() {
     return (
         <div>
-          <div>
-            {this.props.runReport}
-          </div>
-          <button type="submit" onClick={this.handleClick}>Start Again </button>
+          <Container>
+            <Row md="auto">
+              {this.props.runReport}
+            </Row>
+            <Row md="auto">
+              <Button type="submit" onClick={this.handleClick}>Start Again </Button>
+            </Row>
+          </Container>
         </div>
     )
   }

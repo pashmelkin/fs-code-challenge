@@ -1,8 +1,11 @@
-import React from 'react';
-import SettingsEntity from './entities/SettingsEntity';
-import Rotation from './Rotation';
-import Sequence from './Sequence';
-import NumEggs from './NumEggs';
+import React from 'react'
+import SettingsEntity from './entities/SettingsEntity'
+import Rotation from './Rotation'
+import Sequence from './Sequence'
+import NumEggs from './NumEggs'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Container, Button, Row} from 'react-bootstrap'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -33,7 +36,9 @@ class Settings extends React.Component {
       } else {
         callback();
       }
-    });
+    }).catch(error => {
+        console.log('There is some error:' + error);
+    })
   };
   handleEggs = (number) => {
       this.setState({numberOfEggs: number});
@@ -66,12 +71,21 @@ class Settings extends React.Component {
   render() {
     return(
     <div>
-      <NumEggs  onNumberSet={this.handleEggs} />
-      <Rotation onRotation={this.handleRotation} />
-      <Sequence onSequence={this.handleSequence} />
-
-      <button type="submit" onClick={this.handleClick}
-        disabled={!this.state.formValid}>Save Settings</button>
+      <Container  md="auto">
+        <Row>
+          <NumEggs  onNumberSet={this.handleEggs} />
+        </Row>
+        <Row>
+          <Rotation onRotation={this.handleRotation} />
+        </Row>
+        <Row>
+          <Sequence onSequence={this.handleSequence} />
+        </Row>
+        <Row>
+          <Button onClick={this.handleClick} variant="primary" type="submit"
+                  disabled={!this.state.formValid}>Save Settings</Button>
+        </Row>
+      </Container>
     </div>
   );
   }

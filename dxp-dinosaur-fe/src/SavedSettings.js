@@ -1,4 +1,6 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Button, Row} from 'react-bootstrap'
 
 class SavedSettings extends React.Component {
 
@@ -24,7 +26,11 @@ class SavedSettings extends React.Component {
   render() {
     return (
         <div>
-          <button type="submit" onClick={this.handleClick}>Run</button>
+          <Container>
+            <Row md="auto">
+              <Button type="submit" onClick={this.handleClick}>Run</Button>
+            </Row>
+          </Container>
         </div>
     )
   }
