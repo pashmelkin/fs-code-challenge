@@ -11,7 +11,6 @@ class Settings {
 
   ValidateDecimalNumber(numberToValidate){
     const numberParsed = parseInt(numberToValidate, 10);
-
     if (isNaN(numberParsed) || numberParsed <= 0)
     {
       return(VALIDATION_ERROR);
@@ -29,7 +28,6 @@ class Settings {
   ValidateSequence(){
     var elements = Array.from(this.sequence.split(" "));
     elements.forEach(element => {
-
         if(this.ValidateDecimalNumber(element) === VALIDATION_ERROR)
         {
           return (VALIDATION_ERROR);
