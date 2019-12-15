@@ -1,4 +1,7 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+
 
 class Sequence extends React.Component {
   constructor(props) {
@@ -16,16 +19,15 @@ class Sequence extends React.Component {
   render() {
     return(
       <div>
-        <div> Sequence </div>
-        <form>
-        <input
-           type="text"
-           name="Sequence"
-           value={this.state.sequence}
-           onChange={this.handleChange}
-         />
-        </form>
-        </div>
+        <Form>
+          <Form.Group controlId="textareas" >
+            <Form.Label> Sequence</Form.Label>
+            <Form.Control type="text" placeholder="Enter Sequence"
+            value={this.state.sequence}
+            onChange={this.handleChange} />
+          </Form.Group>
+        </Form>
+      </div>
       );
   }
 }

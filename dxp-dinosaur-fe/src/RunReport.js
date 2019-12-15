@@ -1,4 +1,7 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+
 
 class RunReport extends React.Component {
 
@@ -12,7 +15,7 @@ class RunReport extends React.Component {
           <div>
             {this.props.runReport}
           </div>
-          <button type="submit" onClick={this.handleClick}>Start Again </button>
+          <Button type="submit" onClick={this.handleClick}>Start Again </Button>
         </div>
     )
   }

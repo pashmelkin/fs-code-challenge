@@ -28,9 +28,12 @@ class NumEggs extends React.Component {
 
       <div>
           <Form>
-          <Form.Group controlId="textareas">
+          <Form.Group controlId="textareas" >
             <Form.Label> Number of Eggs</Form.Label>
-            <Form.Control type="integer" placeholder="Enter Number of Eggs" />
+            <Form.Control type="integer" placeholder="Enter Number of Eggs"
+            min='0'
+            value={this.state.numberOfEggs}
+            onChange={this.handleChange} />
           </Form.Group>
         </Form>
       </div>
