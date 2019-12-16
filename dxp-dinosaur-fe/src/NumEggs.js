@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 class NumEggs extends React.Component {
   constructor(props) {
    super(props);
-   this.state = { numberOfEggs: ' ' };
+   this.state = { numberOfEggs: '' };
   }
 
   handleChange = event => {

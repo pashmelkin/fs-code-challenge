@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 class Rotation extends React.Component {
   constructor(props) {
    super(props);
-   this.state = { rotation: ' ' };
+   this.state = { rotation: '' };
   }
   handleChange = event => {
       if(event.target.value === '')

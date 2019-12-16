@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 class Sequence extends React.Component {
   constructor(props) {
    super(props);
-   this.state = { sequence: ' ' };
+   this.state = { sequence: '' };
   }
 
   handleChange = event => {
