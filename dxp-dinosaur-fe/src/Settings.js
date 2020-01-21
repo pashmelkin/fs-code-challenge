@@ -3,6 +3,7 @@ import SettingsEntity from './entities/SettingsEntity'
 import Rotation from './Rotation'
 import Sequence from './Sequence'
 import NumEggs from './NumEggs'
+import TextComponent from './TextComponent'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Button, Row} from 'react-bootstrap'
@@ -40,14 +41,11 @@ class Settings extends React.Component {
         console.log('There is some error:' + error);
     })
   };
-  handleEggs = (number) => {
-      this.setState({numberOfEggs: number});
-  }
-  handleRotation = (rotation) => {
-      this.setState({rotation});
-  }
-  handleSequence = (sequence) => {
-      this.setState({sequence: sequence});
+  handleValue = (parameter, value) => {
+      console.log("parameter: " + parameter);
+      console.log("value: " + value);
+
+      this.setState({parameter: value});
   }
 
   handleClick = () => {
@@ -73,13 +71,16 @@ class Settings extends React.Component {
     <div>
       <Container  md="auto">
         <Row>
-          <NumEggs  onNumberSet={this.handleEggs} />
+          <NumEggs  onNumberSet={this.handleValue} />
         </Row>
         <Row>
-          <Rotation onRotation={this.handleRotation} />
+          <Rotation onRotation={this.handleValue} />
         </Row>
         <Row>
-          <Sequence onSequence={this.handleSequence} />
+          <Sequence onSequence={this.handleValue} />
+        </Row>
+        <Row>
+          <TextComponent labelText="Please enter the number of Eggs" onNumberSet={this.handleValue}/>
         </Row>
         <Row>
           <Button onClick={this.handleClick} variant="primary" type="submit"

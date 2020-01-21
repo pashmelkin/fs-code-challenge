@@ -18,7 +18,7 @@ class Rotation extends React.Component {
       if (!isNaN(rotationParsed) && rotationParsed < 1)
       {
         this.setState({ rotation: rotationParsed });
-        this.props.onRotation(rotationParsed);
+        this.props.onRotation("rotation", rotationParsed);
       }
    };
 
