@@ -13,9 +13,10 @@ class TextComponent extends React.Component {
       if(event.target.value === '')
       {
           this.setState({ Text: '' });
+          return;
       }
       const textToInt = parseInt(event.target.value, 10);
-      if (!isNaN(textToInt) && textToInt > 0)
+      if (this.allnumeric(event.target.value))
       {
         this.setState({ Text: textToInt });
       //  this.props.onNumberSet(textToInt);
@@ -23,7 +24,15 @@ class TextComponent extends React.Component {
 
    };
 
-  render() {
+  allnumeric = inputtxt => {
+      console.log(inputtxt);
+      const numbers = /^[0-9]+$/;
+      return !!inputtxt.match(numbers);
+
+    };
+
+
+    render() {
     return(
 
       <div>
