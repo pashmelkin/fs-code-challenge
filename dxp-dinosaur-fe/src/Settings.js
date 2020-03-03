@@ -39,8 +39,6 @@ class Settings extends React.Component {
     })
   };
   handleValue = (parameter, value) => {
-      console.log("parameter: " + parameter);
-      console.log("value: " + value);
 
       this.setState({[parameter]: value});
       console.log(this.state);
