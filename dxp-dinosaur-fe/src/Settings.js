@@ -1,8 +1,6 @@
 import React from 'react'
 import SettingsEntity from './entities/SettingsEntity'
-import Rotation from './Rotation'
-import Sequence from './Sequence'
-import NumEggs from './NumEggs'
+import TextComponent from './TextComponent'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Button, Row} from 'react-bootstrap'
@@ -40,14 +38,10 @@ class Settings extends React.Component {
         console.log('There is some error:' + error);
     })
   };
-  handleEggs = (number) => {
-      this.setState({numberOfEggs: number});
-  }
-  handleRotation = (rotation) => {
-      this.setState({rotation});
-  }
-  handleSequence = (sequence) => {
-      this.setState({sequence: sequence});
+  handleValue = (parameter, value) => {
+
+      this.setState({[parameter]: value});
+      console.log(this.state);
   }
 
   handleClick = () => {
@@ -73,13 +67,13 @@ class Settings extends React.Component {
     <div>
       <Container  md="auto">
         <Row>
-          <NumEggs  onNumberSet={this.handleEggs} />
+          <TextComponent labelText="Please enter the number of Eggs" onSet={(e) => this.handleValue("numberOfEggs", e)}/>
         </Row>
         <Row>
-          <Rotation onRotation={this.handleRotation} />
+          <TextComponent labelText="Please enter the Rotation" onSet={(e) => this.handleValue("rotation", e)}/>
         </Row>
         <Row>
-          <Sequence onSequence={this.handleSequence} />
+          <TextComponent labelText="Please enter the sequence" onSet={(e) => this.handleValue("sequence", e)}/>
         </Row>
         <Row>
           <Button onClick={this.handleClick} variant="primary" type="submit"
