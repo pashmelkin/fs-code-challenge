@@ -3,13 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
 
-class TextComponent extends React.Component {
+class FormComponent extends React.Component {
   constructor(props) {
    super(props);
    this.state = { Text: '' };
   }
 
-  handleChange = event => {
+  handleChange = (event, checkFunction) => {
       const value = event.target.value.trimLeft();
 
       if(value === '')
@@ -17,21 +17,13 @@ class TextComponent extends React.Component {
           this.setState({ Text: '' });
           return;
       }
-      if (this.allnumeric(value))
+      if (checkFunction(value))
       {
-        this.setState({ Text: value });
-        this.props.onSet(value);
+          this.setState({ Text: value });
+          this.props.onSet(value);
       }
 
    };
-
-  allnumeric = inputtxt => {
-      console.log(inputtxt);
-      const numbers = /^[0-9 .]+$/;
-      return !!inputtxt.match(numbers);
-
-    };
-
 
     render() {
     return(
@@ -39,10 +31,11 @@ class TextComponent extends React.Component {
       <div>
           <Form>
           <Form.Group controlId="textareas" >
-            <Form.Label> {this.props.labelText}</Form.Label>
+            <Form.Label column={0}> {this.props.labelText}</Form.Label>
             <Form.Control type="string" placeholder="Enter the Value"
             value={this.state.Text}
-            onChange={this.handleChange} />
+            onChange={(e) => this.handleChange (e, this.props.checkFunction)}
+            />
           </Form.Group>
         </Form>
       </div>
@@ -50,4 +43,4 @@ class TextComponent extends React.Component {
   }
 }
 
-export default TextComponent;
+export default FormComponent;
