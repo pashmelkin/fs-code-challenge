@@ -19,7 +19,7 @@ class Settings {
 
   ValidateRotation(){
     const rotationParsed = parseFloat(this.rotation);
-    if (isNaN(rotationParsed) || rotationParsed > 1)
+    if (isNaN(rotationParsed) || rotationParsed > 100)
     {
         return(VALIDATION_ERROR);
     }

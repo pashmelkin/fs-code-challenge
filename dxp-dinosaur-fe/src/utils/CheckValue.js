@@ -1,9 +1,22 @@
 
 
 function isAllNumeric (inputtxt)  {
-        console.log("isAllnumeric: " + inputtxt);
-        const numbers = /^[0-9 .]+$/;
-        return !!inputtxt.match(numbers);
+        const numbers = /^[0-9]+$/;
+        return !!inputtxt.match(numbers) ;
 }
 
-export default isAllNumeric;
+function checkSequence (inputtxt)  {
+
+        return true;
+}
+
+function checkRotation (inputtxt)  {
+        const number = Number(inputtxt);
+        return !(isNaN(number) || number > 100 || inputtxt.includes('.') );
+}
+
+module.exports = {
+        isAllNumeric,
+        checkSequence,
+        checkRotation
+}
