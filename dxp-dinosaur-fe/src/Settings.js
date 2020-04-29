@@ -1,6 +1,9 @@
 import React from 'react'
 import SettingsEntity from './entities/SettingsEntity'
-import TextComponent from './TextComponent'
+import FormComponent from './FormComponent'
+import checkFunctions from './utils/CheckValue';
+import ApiCall from './utils/ApiCall';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Button, Row} from 'react-bootstrap'
@@ -19,29 +22,12 @@ class Settings extends React.Component {
 
   saveSettings = (settings, callback) => {
     console.log(settings);
-    fetch('http://localhost:3001/settings', {
-      method: 'PUT',
-      headers: {
-       'Content-Type': 'application/json'
-      },
-      body: settings
-    }
-    ).then(response => {
-      if (!response.ok) {
-        response.json().then(json => {
-          callback(json);
-        });
-      } else {
-        callback();
-      }
-    }).catch(error => {
-        console.log('There is some error:' + error);
-    })
-  };
-  handleValue = (parameter, value) => {
+    ApiCall(settings, callback);
 
-      this.setState({[parameter]: value});
-      console.log(this.state);
+  };
+
+  handleValue = (parameter, value) => {
+    this.setState({[parameter]: value});
   }
 
   handleClick = () => {
@@ -53,7 +39,7 @@ class Settings extends React.Component {
     let data = JSON.stringify(settings);
     this.saveSettings(data, jsonBody => {
         result = JSON.stringify(jsonBody, null, 2);
-        //TODO base on errors rerturns
+        //TODO base on errors returns
         if (result === undefined)
         {
           this.props.onSettingsSet("SavedSettings");
@@ -67,13 +53,13 @@ class Settings extends React.Component {
     <div>
       <Container  md="auto">
         <Row>
-          <TextComponent labelText="Please enter the number of Eggs" onSet={(e) => this.handleValue("numberOfEggs", e)}/>
+          <FormComponent labelText="Please enter the number of Eggs" checkChangeFunction={checkFunctions.isAllNumeric} onSet={(e) => this.handleValue("numberOfEggs", e)}/>
         </Row>
         <Row>
-          <TextComponent labelText="Please enter the Rotation" onSet={(e) => this.handleValue("rotation", e)}/>
+          <FormComponent labelText="Please enter the Rotation" checkChangeFunction={checkFunctions.isAllNumeric}  onSet={(e) => this.handleValue("rotation", e)}/>
         </Row>
         <Row>
-          <TextComponent labelText="Please enter the sequence" onSet={(e) => this.handleValue("sequence", e)}/>
+          <FormComponent labelText="Please enter the sequence" checkChangeFunction={checkFunctions.checkSequence}  onSet={(e) => this.handleValue("sequence", e)}/>
         </Row>
         <Row>
           <Button onClick={this.handleClick} variant="primary" type="submit"

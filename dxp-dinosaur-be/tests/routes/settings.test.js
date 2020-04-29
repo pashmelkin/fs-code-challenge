@@ -30,7 +30,7 @@ test('settings endpoint returns error when rotation is wrong', async done => {
   const response = await
       request
       .put('/settings')
-      .send({numberOfEggs: 3, rotation: 1.25, sequence: '1 2 3'})
+      .send({numberOfEggs: 3, rotation: 125, sequence: '1 2 3'})
       .set('Accept', 'application/json');
 
   expect(response.status).toBe(400)
