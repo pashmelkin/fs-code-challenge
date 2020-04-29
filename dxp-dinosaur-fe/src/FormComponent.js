@@ -11,20 +11,18 @@ class FormComponent extends React.Component {
 
   handleChange = (event, checkFunction) => {
       const value = event.target.value;
-      console.log("handle change: " + value);
 
+      console.log("v: " + value);
 
-      if(value === '' || typeof checkFunction === 'undefined')
+      if(typeof checkFunction === 'undefined')
       {
           this.setState({ Text: value });
           return;
       }
-      if (checkFunction(value))
+      if (value === '' || checkFunction(value))
       {
-          this.setState({ Text: value });
+          this.setState({ Text: value});
           this.props.onSet(value);
-          console.log("handle change: #2 " +  value);
-
       }
 
    };

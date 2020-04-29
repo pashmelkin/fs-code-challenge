@@ -56,7 +56,7 @@ class Settings extends React.Component {
           <FormComponent labelText="Please enter the number of Eggs" checkFunction={checkFunctions.isAllNumeric} onSet={(e) => this.handleValue("numberOfEggs", e)}/>
         </Row>
         <Row>
-          <FormComponent labelText="Please enter the Rotation" checkFunction={checkFunctions.checkRotation}  onSet={(e) => this.handleValue("rotation", e)}/>
+          <FormComponent labelText="Please enter the Rotation" checkFunction={checkFunctions.isAllNumeric}  onSet={(e) => this.handleValue("rotation", e)}/>
         </Row>
         <Row>
           <FormComponent labelText="Please enter the sequence" checkFunction={checkFunctions.checkSequence}  onSet={(e) => this.handleValue("sequence", e)}/>

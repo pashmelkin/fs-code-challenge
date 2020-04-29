@@ -2,21 +2,22 @@
 
 function isAllNumeric (inputtxt)  {
         const numbers = /^[0-9]+$/;
-        return !!inputtxt.match(numbers) ;
+        return typeof(inputtxt) === 'number' ||  !!inputtxt.match(numbers);
 }
+
 
 function checkSequence (inputtxt)  {
-
-        return true;
-}
-
-function checkRotation (inputtxt)  {
-        const number = Number(inputtxt);
-        return !(isNaN(number) || number > 100 || inputtxt.includes('.') );
+        let result = true;
+        console.log("cjheck " + inputtxt);
+        inputtxt.split('').forEach(e => {
+                const number = Number(e);
+                //console.log("e::" + number + " Nan: " + !isNaN(number) + " all numeric: "+  isAllNumeric(e));
+               result = result && !isNaN(number) && isAllNumeric(number);
+        })
+        return result;
 }
 
 module.exports = {
         isAllNumeric,
-        checkSequence,
-        checkRotation
+        checkSequence
 }
