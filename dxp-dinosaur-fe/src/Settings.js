@@ -53,13 +53,13 @@ class Settings extends React.Component {
     <div>
       <Container  md="auto">
         <Row>
-          <FormComponent labelText="Please enter the number of Eggs" checkFunction={checkFunctions.isAllNumeric} onSet={(e) => this.handleValue("numberOfEggs", e)}/>
+          <FormComponent labelText="Please enter the number of Eggs" checkChangeFunction={checkFunctions.isAllNumeric} onSet={(e) => this.handleValue("numberOfEggs", e)}/>
         </Row>
         <Row>
-          <FormComponent labelText="Please enter the Rotation" checkFunction={checkFunctions.isAllNumeric}  onSet={(e) => this.handleValue("rotation", e)}/>
+          <FormComponent labelText="Please enter the Rotation" checkChangeFunction={checkFunctions.isAllNumeric}  onSet={(e) => this.handleValue("rotation", e)}/>
         </Row>
         <Row>
-          <FormComponent labelText="Please enter the sequence" checkFunction={checkFunctions.checkSequence}  onSet={(e) => this.handleValue("sequence", e)}/>
+          <FormComponent labelText="Please enter the sequence" checkChangeFunction={checkFunctions.checkSequence}  onSet={(e) => this.handleValue("sequence", e)}/>
         </Row>
         <Row>
           <Button onClick={this.handleClick} variant="primary" type="submit"

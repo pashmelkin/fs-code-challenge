@@ -11,7 +11,6 @@ function checkSequence (inputtxt)  {
         console.log("cjheck " + inputtxt);
         inputtxt.split('').forEach(e => {
                 const number = Number(e);
-                //console.log("e::" + number + " Nan: " + !isNaN(number) + " all numeric: "+  isAllNumeric(e));
                result = result && !isNaN(number) && isAllNumeric(number);
         })
         return result;

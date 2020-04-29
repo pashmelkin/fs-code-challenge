@@ -27,6 +27,10 @@ class FormComponent extends React.Component {
 
    };
 
+   handleValue = (event, checkValue) => {
+
+   }
+
     render() {
     return(
 
@@ -35,8 +39,9 @@ class FormComponent extends React.Component {
           <Form.Group controlId="textareas" >
             <Form.Label column={0}> {this.props.labelText}</Form.Label>
             <Form.Control type="string" placeholder="Enter the Value"
-            value={this.state.Text}
-            onChange={(e) => this.handleChange (e, this.props.checkFunction)}
+                value={this.state.Text}
+                onChange={(e) => this.handleChange (e, this.props.checkChangeFunction)} onSet={(e) => this.handleValue() (e, this.props.checkFunction)}
+
             />
           </Form.Group>
         </Form>
