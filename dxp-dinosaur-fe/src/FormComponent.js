@@ -12,8 +12,6 @@ class FormComponent extends React.Component {
   handleChange = (event, checkFunction) => {
       const value = event.target.value;
 
-      console.log("v: " + value);
-
       if(typeof checkFunction === 'undefined')
       {
           this.setState({ Text: value });
@@ -27,10 +25,6 @@ class FormComponent extends React.Component {
 
    };
 
-   handleValue = (event, checkValue) => {
-
-   }
-
     render() {
     return(
 
@@ -40,7 +34,7 @@ class FormComponent extends React.Component {
             <Form.Label column={0}> {this.props.labelText}</Form.Label>
             <Form.Control type="string" placeholder="Enter the Value"
                 value={this.state.Text}
-                onChange={(e) => this.handleChange (e, this.props.checkChangeFunction)} onSet={(e) => this.handleValue() (e, this.props.checkFunction)}
+                onChange={(e) => this.handleChange (e, this.props.checkChangeFunction)}
 
             />
           </Form.Group>

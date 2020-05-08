@@ -53,7 +53,10 @@ class Settings extends React.Component {
     <div>
       <Container  md="auto">
         <Row>
-          <FormComponent labelText="Please enter the number of Eggs" checkChangeFunction={checkFunctions.isAllNumeric} onSet={(e) => this.handleValue("numberOfEggs", e)}/>
+          <FormComponent labelText="Please enter the number of Eggs"
+                         checkChangeFunction={checkFunctions.isAllNumeric}
+                         checkSetValue = {checkFunctions.isAllNumeric}
+                         onSet={(e) => this.handleValue("numberOfEggs", e)}/>
         </Row>
         <Row>
           <FormComponent labelText="Please enter the Rotation" checkChangeFunction={checkFunctions.isAllNumeric}  onSet={(e) => this.handleValue("rotation", e)}/>
