@@ -8,7 +8,6 @@
    -> Tests for React pages
    -> move to yarn (?)
    -> CSS usage
-   -> introduce extra checks for different bussienss logic modules (sequence, rotation etc)
 
 4. Some notes:
   3a. FE
